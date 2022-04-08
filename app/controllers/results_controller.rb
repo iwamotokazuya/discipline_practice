@@ -1,21 +1,18 @@
 class ResultsController < ApplicationController
   def create
-    conn = Faraday::Connection.new(:url => 'https://api.webempath.net/v2/analyzeWav') do |f|
-      f.request :url_encoded
-      f.response :logger
-      f.request :multipart
-      f.adapter Faraday.default_adapter
-    end
+    @result = Result.new
+    @result.empath(result_params)
 
-    response = conn.post do |req|
-      req.body = {
-        apikey: 'YOUR API KEY',
-        wav: Faraday::Multipart::FilePart.new(formdata[:voice], 'audio/wav')
-      }
-    end
+    render json: { url: result_path(@result) } if @result.save
+  end
 
-    res = requests.post(url, params=payload, files=file)
-    # print(res.json())
-    judge(formdata, response)
+  def show
+    @result = Result.find(params[:id])
+  end
+
+  private
+
+  def result_params
+    params.permit(:record_voice)
   end
 end
