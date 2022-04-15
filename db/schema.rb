@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_03_27_102412) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "results", force: :cascade do |t|
+  create_table "results", id: { type: :string, limit: 36 }, force: :cascade do |t|
     t.integer "score", null: false
     t.integer "calm", null: false
     t.integer "anger", null: false
