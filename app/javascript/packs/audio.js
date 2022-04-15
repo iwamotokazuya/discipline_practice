@@ -1,131 +1,48 @@
 import axios from 'axios';
-axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
+  axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
+  axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
+  
+  const record = document.getElementById('record');
 
-// for html
-const record = document.getElementById('record');
-const stop = document.getElementById('stop');
-const play = document.getElementById("playid");
-const result = document.getElementById("result");
+  let stream = null;
+  let audio_sample_rate = null;
+  let scriptProcessor = null;
+  let audioContext = null;
+  let blob = null;
+  let audioCtx = null;
+  let audioStream = null;
 
-// for audio
-let audio_sample_rate = null;
-let audioContext = null;
-let audioCtx = null;
-let blob = null;
+  let audioData = [];
+  let bufferSize = 1024;
 
-// audio data
-let audioData = [];
-let bufferSize = 1024;
+  let saveAudio = function () {
+    console.log('save audio');
+    exportWAV(audioData);
 
-const soundClips = document.querySelector('.sound-clips');
-const mainSection = document.querySelector('.main-controls');
-
-stop.disabled = true;
-
-if (navigator.mediaDevices.getUserMedia) {
-  console.log('getUserMedia supported.');
-  window.AudioContext = window.AudioContext || window.webkitAudioContext;
-  audioCtx = new AudioContext({ sampleRate: 11025 });
-
-  const constraints = { audio: true };
-
-  let onSuccess = function(stream) {
-    const mediaRecorder = new MediaRecorder(stream);
-
-    record.onclick = function() {
-      mediaRecorder.start();
-      console.log(mediaRecorder.state);
-      console.log("recorder started");
-
-      stop.disabled = false;
-      const timeoutId = setTimeout(function() {
-        console.log('stop!!!')
-        stop.click();
-      }, 5000);
-    }
-    
-    stop.onclick = function() {
-      mediaRecorder.stop();
-      saveAudio();
-      
-      console.log(mediaRecorder.state);
-      console.log("recorder stopped");
-      console.log(audioData);
-      
-      stop.disabled = true;
-
-      record.disabled = false;
-      // exportWAV(audioData);
-      // sendToResult(blob);
-      console.log(audioData);
-      audioData = [];
+      audioCtx.close().then(function () {
+      });
     }
 
-    result.onclick = function(e) {
-      // exportWAV(audioData);
-      sendToResult(blob);
-    }
+    let exportWAV = function (audioData) {
+      console.log('change wav');
 
-    let saveAudio = function () {
-      exportWAV(audioData);
-    }
-    // save audio data
-    var onAudioProcess = function (e) {
-      console.log('save');
-      var input = e.inputBuffer.getChannelData(0);
-      var bufferData = new Float32Array(bufferSize);
-      for (var i = 0; i < bufferSize; i++) {
-        bufferData[i] = input[i];
-      }
-
-      audioData.push(bufferData);
-      console.log(audioData);
-    }
-    
-    play.onclick = function(e) {
-      console.log("data available after MediaRecorder.stop() called.");
-      console.log(audioData);
-
-      const clipContainer = document.createElement('article');
-      const clipLabel = document.createElement('p');
-      const audio = document.createElement('audio');
-
-      clipContainer.classList.add('clip');
-      audio.setAttribute('controls', '');
-
-      clipContainer.appendChild(audio);
-      clipContainer.appendChild(clipLabel);
-      soundClips.appendChild(clipContainer);
-
-      audio.controls = true;
-      blob = new Blob(audioData, { 'type' : 'audio/ogg; codecs=opus' });
-      audioData = [];
-      const audioURL = window.URL.createObjectURL(blob);
-      audio.src = audioURL;
-      console.log("recorder stopped");
-    }
-
-    let exportWAV = function(audioData) {
-      console.log('wav change');
-    
-      let encodeWAV = function(samples, sampleRate) {
+      let encodeWAV = function (samples, sampleRate) {
         let buffer = new ArrayBuffer(44 + samples.length * 2);
         let view = new DataView(buffer);
-    
-        let writeString = function(view, offset, string) {
-          for (let i = 0; i < string.length; i++){
+
+        let writeString = function (view, offset, string) {
+          for (let i = 0; i < string.length; i++) {
             view.setUint8(offset + i, string.charCodeAt(i));
           }
-        }
-    
-        let floatTo16BitPCM = function(output, offset, input) {
-          for (let i = 0; i < input.length; i++, offset += 2){
+        };
+
+        let floatTo16BitPCM = function (output, offset, input) {
+          for (let i = 0; i < input.length; i++ , offset += 2) {
             let s = Math.max(-1, Math.min(1, input[i]));
             output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
           }
-        }
-    
+        };
+
         writeString(view, 0, 'RIFF');  // RIFFヘッダ
         view.setUint32(4, 32 + samples.length * 2, true); // これ以降のファイルサイズ
         writeString(view, 8, 'WAVE'); // WAVEヘッダ
@@ -140,11 +57,11 @@ if (navigator.mediaDevices.getUserMedia) {
         writeString(view, 36, 'data'); // dataチャンク
         view.setUint32(40, samples.length * 2, true); // 波形データのバイト数
         floatTo16BitPCM(view, 44, samples); // 波形データ
-    
+
         return view;
-      }
-    
-      let mergeBuffers = function(audioData) {
+      };
+
+      let mergeBuffers = function (audioData) {
         let sampleLength = 0;
         for (let i = 0; i < audioData.length; i++) {
           sampleLength += audioData[i].length;
@@ -158,16 +75,16 @@ if (navigator.mediaDevices.getUserMedia) {
           }
         }
         return samples;
-      }
-    
+      };
+
       let dataview = encodeWAV(mergeBuffers(audioData), audioCtx.sampleRate);
       blob = new Blob([dataview], { type: 'audio/wav' });
+      console.log(dataview);
       let myURL = window.URL || window.webkitURL;
-      let audioURL = myURL.createObjectURL(blob);
-      console.log('change wav');
-      return audioURL
-    }
-    
+      let url = myURL.createObjectURL(blob);
+      return url;
+    };
+
     let sendToResult = function() {
       console.log('sendToResult');
       let formdata = new FormData();
@@ -186,19 +103,58 @@ if (navigator.mediaDevices.getUserMedia) {
           console.log(error.response);
         })
     }
-    
 
-    mediaRecorder.ondataavailable = function(e) {
-      audioData.push(e.data);
-    }
-  }
+    // stop.addEventListener('click', function () {
+    //   saveAudio();
+    //   sendToResult(blob);
+    //   console.log('saved wav');
+    // });
 
-  let onError = function(err) {
-    console.log('The following error occured: ' + err);
-  }
+    var onAudioProcess = function (e) {
+      var input = e.inputBuffer.getChannelData(0);
+      var bufferData = new Float32Array(bufferSize);
+      for (var i = 0; i < bufferSize; i++) {
+        bufferData[i] = input[i];
+      }
 
-  navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
+      audioData.push(bufferData);
+    };
 
-} else {
-   console.log('getUserMedia not supported on your browser!');
-}
+    let handleSuccess = function (stream) {
+      window.AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext({ sampleRate: 11025 });
+
+      scriptProcessor = audioCtx.createScriptProcessor(bufferSize, 1, 1);
+      var mediastreamsource = audioCtx.createMediaStreamSource(stream);
+      mediastreamsource.connect(scriptProcessor);
+      scriptProcessor.onaudioprocess = onAudioProcess;
+      scriptProcessor.connect(audioCtx.destination);
+      audioStream = stream;
+
+      console.log('record start?');
+      
+      const timeoutId = setTimeout(function() {
+        console.log('stop!!!')
+        saveAudio();
+        sendToResult(blob);
+      }, 5000);
+    };
+
+    record.addEventListener('click', () => {
+      if (!stream) {
+        let constraints = {
+          audio: true,
+          video: false,
+        };
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then((stream) => {
+            audioStream = stream;
+            handleSuccess(audioStream);
+            console.log('supported');
+            return audioStream
+          })
+          .catch((error) => {
+            console.error('error:', error);
+          });
+      }
+    });
