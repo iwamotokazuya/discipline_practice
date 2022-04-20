@@ -8,7 +8,11 @@
 <p>喜び: <%= @result.joy %>点</p>
 <p>悲しみ: <%= @result.sorrow %>点</p>
 <p>元気度: <%= @result.joy %>点</p>
-<p>得点: <%= @result.score %>て〜ん</p>
 
 
 <p><%= @comment %></p>
+
+<%= link_to "https://twitter.com/share?url=#{request.url}&text=しつけ度『#{@result.score}点』だったよ！%0a%0aあなたもペットに理想的なしつけを身につけませんか？", target: '_blank' do %>
+  <i class="fab fa-twitter" style='color: #3399FF;'></i>結果をツイートする
+<% end %>
+</div>
