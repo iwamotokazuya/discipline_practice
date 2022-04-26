@@ -1,4 +1,9 @@
 <h1>結果</h1>
+<% if User.exists?(1) %>
+  <p>あなたの結果は・・・</p>
+<% else %>
+  <p><%= @result.user.name %>さんの結果は・・・</p>
+<% end %>
 <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'mx-auto mt-2') %>
 
 
@@ -14,4 +19,15 @@
 
 <%= link_to "https://twitter.com/share?url=#{request.url}&text=しつけ度『#{@result.score}点』だったよ！%0a%0aあなたもペットに理想的なしつけを身につけませんか？", target: '_blank' do %>
   <i class="fab fa-twitter" style='color: #3399FF;'></i>結果をツイートする
+<% end %>
+<br>
+
+<% if User.exists?(1) %>
+  <%= link_to 'ホームへ戻る', root_path %>
+<% else %>
+  <%= link_to 'ホームへ戻る', root_path %>
+  <%= link_to 'もう一度挑戦する', root_path %>
+  <% if @result.score = 80 %>
+    <%= link_to '次へ進む', 'records/login_new' %>
+  <% end %>
 <% end %>

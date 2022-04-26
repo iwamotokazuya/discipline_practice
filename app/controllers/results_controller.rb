@@ -1,8 +1,11 @@
 class ResultsController < ApplicationController
+  skip_before_action :require_login, only: %i[create show]
+
   def create
     @result = Result.new
     @result.empath(result_params)
 
+    @result.user_id = current_user.id if logged_in?
     render json: { url: result_path(@result) } if @result.save
   end
 

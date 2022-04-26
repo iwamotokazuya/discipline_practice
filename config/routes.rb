@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   resources :results, only: %i[show create]
 
+  get 'records/login_new' => 'records#login_new'
+
   resources :users
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

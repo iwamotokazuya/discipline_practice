@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: %i[new create]
+
   def new
     @user = User.new
     @result = Result.find(params[:result_id]) if params[:result_id]
@@ -6,12 +8,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to login_path
-      flash[:notice] = 'ユーザーの作成に成功しました'
+      auto_login(@user)
+      # binding.pry
+      redirect_to root_path, notice: 'ユーザー登録に成功しました'
     else
-      flash.now[:alert] = 'ユーザーの作成に失敗しました'
+      flash.now[:alert] = 'ユーザー登録に失敗しました'
       render :new
+    end
     end
   end
 
