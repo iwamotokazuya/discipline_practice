@@ -3,4 +3,11 @@ Rails.application.routes.draw do
   root 'records#new'
   
   resources :results, only: %i[show create]
+
+  get 'records/login_new' => 'records#login_new'
+
+  resources :users
+  get 'login', to: 'user_sessions#new'
+  post 'login', to: 'user_sessions#create'
+  delete 'logout', to: 'user_sessions#destroy'
 end
