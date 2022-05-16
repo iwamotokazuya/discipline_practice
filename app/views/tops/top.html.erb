@@ -1,0 +1,17 @@
+<h1.text-xl.font-black.text-gray-800.lg:text-2xl>しつけメーター</h1>
+<br>
+
+  <%= link_to '登録してはじめる', new_user_path, class: 'btn-primary' %>
+  <%= link_to '登録せずにはじめる', '/records/new', class: 'btn-secondary ml-4' %>
+  <%= link_to '診断スタート', '/records/new', class: 'btn-secondary ml-4' %>
+
+  <%= link_to 'ログイン', login_path %>
+  <%= link_to 'ログアウト', logout_path, method: :delete %>
+
+  <br>
+  <% if logged_in? %>
+    <p>ログインしている</p>
+    <%= link_to 'ユーザー編集', edit_user_path(current_user), class: 'btn-secondary ml-4' %>
+  <% else %>
+    <p>ログインしていない</p>
+  <% end %>
