@@ -1,8 +1,9 @@
 class RecordsController < ApplicationController
-  # skip_before_action :require_login, only: %i[new]
-  before_action :require_login, only: %i[new]
+  skip_before_action :require_login
 
   def new; end
 
-  def login_new; end
+  def login_new
+    @user = current_user
+  end
 end
