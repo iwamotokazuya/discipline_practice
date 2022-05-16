@@ -1,18 +1,27 @@
 <h1>結果</h1>
-<% if User.exists?(1) %>
-  <p>あなたの結果は・・・</p>
+<% if User.exists?(id: 1) %>
+  <p><%= @result.user.name %>さんの結果は・・・</p>
 <% else %>
   <p><%= @result.user.name %>さんの結果は・・・</p>
 <% end %>
-<%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'mx-auto mt-2') %>
+<% if @result.record_voice.attached? %>
+  <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'mx-auto mt-2') %>
+<% else %>
+  <p>録音が失敗しました</p>
+  <%= link_to 'もう一度やりなおす', '/records/new' %>
+<% end %>
 
 
-<p>得点: <%= @result.score %>点</p>
-<p>平常: <%= @result.calm %>点</p>
-<p>怒り: <%= @result.anger %>点</p>
-<p>喜び: <%= @result.joy %>点</p>
-<p>悲しみ: <%= @result.sorrow %>点</p>
-<p>元気度: <%= @result.joy %>点</p>
+<% if [@result.anger, @result.sorrow, @result.joy, @result.energy, @result.calm].sum.zero? %>
+  <p>エラー！！</p>
+<% else %>
+  <p>得点: <%= @result.score %>点</p>
+  <p>平常: <%= @result.calm %>点</p>
+  <p>怒り: <%= @result.anger %>点</p>
+  <p>喜び: <%= @result.joy %>点</p>
+  <p>悲しみ: <%= @result.sorrow %>点</p>
+  <p>元気度: <%= @result.joy %>点</p>
+<% end %>
 
 
 <p><%= @comment %></p>
@@ -22,12 +31,12 @@
 <% end %>
 <br>
 
-<% if User.exists?(1) %>
+<% if logged_in? %>
   <%= link_to 'ホームへ戻る', root_path %>
+  <%= link_to 'もう一度挑戦する', '/records/new' %>
+  <% if @result.score >= 25 %>
+    <%= link_to '次へ進む', '/records/login_new' %>
+  <% end %>
 <% else %>
   <%= link_to 'ホームへ戻る', root_path %>
-  <%= link_to 'もう一度挑戦する', root_path %>
-  <% if @result.score = 80 %>
-    <%= link_to '次へ進む', 'records/login_new' %>
-  <% end %>
 <% end %>

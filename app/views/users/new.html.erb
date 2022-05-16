@@ -1,13 +1,13 @@
-
-<h1.inline.text-2xl.font-bold.border-b-2>ユーザー登録</h1>
-<%= form_with model: @user, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "登録" %>
+<h1 class = inline.text-2xl.font-bold.border-b-2>ユーザー登録</h1>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  
+  <%= f.input :images, as: :file, input_html: { multiple: true }, name: 'recipe[images][]', id: "recipe_image_n", class: "recipe-images" %>
+  <div id="new-image"></div>
+  <%= f.button :submit, '登録', class: %w[btn btn-primary] %>
 <% end %>
+
+<%= javascript_pack_tag 'preview' %>

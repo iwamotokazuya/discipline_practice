@@ -1,0 +1,19 @@
+<h1 class = inline.text-2xl.font-bold.border-b-2>ユーザー変更</h1>
+<%= simple_form_for @user, url: new_user_path do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  
+  <%= f.input :images, as: :file, input_html: { multiple: true } %>
+  <% if @user.images.attached? %>
+    <% @user.images.each do |image| %>
+      <%= image_tag image.variant(resize:'400x400'), class: 'img-responsive', id: "new-image" %>
+      <%= link_to '削除', user_attachment_path(image.id), method: :delete, class: 'btn btn-danger' %>
+    <% end %>
+  <% end %>
+  <div id="new-image"></div>
+  <%= f.button :submit, '登録', class: %w[btn btn-primary] %>
+<% end %>
+
+<%= javascript_pack_tag 'preview' %>
