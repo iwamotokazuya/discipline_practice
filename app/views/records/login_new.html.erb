@@ -1,5 +1,9 @@
-<h1>録音画面</h1>
-<h2>トゥーーーーーす</h2>
+<h1>録音画面2</h1>
+<% if @user.images.attached? %>
+    <% @user.images.each do |image| %>
+      <%= image_tag image.variant(resize:'400x400').processed, class: 'img-responsive', id: "new-image" %>
+    <% end %>
+  <% end %>
 <div class="wrapper">
   <section class="main-controls">
     <div id="buttons">
