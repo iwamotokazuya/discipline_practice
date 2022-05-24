@@ -1,3 +1,87 @@
 // Place all the styles related to the tops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.top {
+  align-items: flex-end;
+  padding-bottom: 60px;
+}
+h1.col-4 {
+  position: absolute;
+  width: 600px;
+  height: 84px;
+  left: 45px;
+  top: 150px;
+
+  font-family: 'Kiwi Maru', serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 60px;
+  display: flex;
+  align-items: center;
+  transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+
+  color: #000000b3;
+}
+.sentence {
+position: absolute;
+width: 200px;
+height: 42px;
+left: 50px;
+top: 350px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 42px;
+
+color: #000000b3;
+}
+.col-12 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(243, 197, 155, 0.35);
+  border-radius: 10px;
+}
+.col-8 {
+  width: 328px;
+  height: 572px;
+}
+a.start {
+  position: absolute;
+  width: 200px;
+  height: 42px;
+  left: 60px;
+  top: 450px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 42px;
+  text-decoration: none;
+
+  color: #000000b3;
+}
+a.start:hover {
+  color: #df842f;
+}
+.btn.btn-outline-success.top {
+  position: absolute;
+  width: 200px;
+  height: 42px;
+  left: 100px;
+  top: 450px;
+}
+.btn.btn-outline-danger.top {
+  position: absolute;
+  width: 200px;
+  height: 42px;
+  left: 100px;
+  top: 500px;
+}

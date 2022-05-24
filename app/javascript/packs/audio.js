@@ -3,6 +3,7 @@ import axios from 'axios';
   axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
   
   const record = document.getElementById('record');
+  const sentence = document.getElementById('sentence');
 
   let stream = null;
   let audio_sample_rate = null;
@@ -104,12 +105,6 @@ import axios from 'axios';
         })
     }
 
-    // stop.addEventListener('click', function () {
-    //   saveAudio();
-    //   sendToResult(blob);
-    //   console.log('saved wav');
-    // });
-
     var onAudioProcess = function (e) {
       var input = e.inputBuffer.getChannelData(0);
       var bufferData = new Float32Array(bufferSize);
@@ -157,4 +152,5 @@ import axios from 'axios';
             console.error('error:', error);
           });
       }
+      sentence.innerHTML = '〜録音中〜';
     });

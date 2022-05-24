@@ -1,14 +1,13 @@
-<h1>録音画面2</h1>
-<% if @user.images.attached? %>
+<div class='wrapper record'>
+  <% if @user.images.attached? %>
     <% @user.images.each do |image| %>
-      <%= image_tag image.variant(resize:'400x400').processed, class: 'img-responsive', id: "new-image" %>
+      <%= image_tag image.variant(resize:'1200x400').processed, class: 'img-responsive record-img', id: 'new-image' %>
     <% end %>
   <% end %>
-<div class="wrapper">
-  <section class="main-controls">
-    <div id="buttons">
-      <button class = "btn btn-dark w-25" id="record" >録音開始</button>
-    </div>
-
+    <p id='record'><span class='iconify mic2' data-icon='entypo:mic'></span></p>
+</div>
+<div class='text-center'>
+  <p id='sentence'>クリックで録音開始 ※5秒間計測</P><br>
+  <p class='word'>一言で怒ってね</P>
 </div>
 <%= javascript_pack_tag 'audio' %>

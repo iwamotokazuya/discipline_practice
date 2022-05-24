@@ -1,3 +1,75 @@
 // Place all the styles related to the records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+h1.recording {
+position: absolute;
+width: 509px;
+height: 65px;
+top: 200px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 54px;
+line-height: 84px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #df842f;;
+}
+.record {
+  background: rgba(243, 197, 155, 0.35);
+  border-radius: 10px;
+  height: 450px;
+}
+.iconify.mic {
+  position: absolute;
+  color: #333;
+  font-size: 300px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+.iconify.mic :hover {
+  color: #666;
+}
+.iconify.mic :active {
+  color: #df842f;
+}
+p#sentence {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 500;
+  font-size: 54px;
+}
+p.word {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 10px;
+  color: #df842f;
+}
+.img-responsive.record-img {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+.iconify.mic2 {
+  position: absolute;
+  font-size: 300px;
+  height: 450px;
+  top: 50%;
+  left: 70%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+.iconify.mic2 :hover {
+  color: #666;
+}
+.iconify.mic2 :active {
+  color: #df842f;
+}
