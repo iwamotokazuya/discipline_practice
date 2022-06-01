@@ -18,7 +18,7 @@ text-align: center;
 
 color: #df842f;;
 }
-.record {
+.wrapper.record {
   background: rgba(243, 197, 155, 0.35);
   border-radius: 10px;
   height: 450px;
@@ -51,12 +51,13 @@ p.word {
   line-height: 10px;
   color: #df842f;
 }
-.img-responsive.record-img {
+.swiper-container-login {
   position: absolute;
+  width: 600px;
+  height: 450px;
   top: 50%;
-  left: 25%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
+  left: 5%;
+  transform: translate(5%, -55%)
 }
 .iconify.mic2 {
   position: absolute;

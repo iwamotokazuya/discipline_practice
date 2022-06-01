@@ -1,14 +1,32 @@
 <div class='top'>
   <div class='col-12 clearfix'>
     <div class='row'>
-      <h1 class='col-4'>しつけメーター</h1>
+      <h1 class='col-4'>しつけメー<span>ター</span></h1>
       <p class='sentence'>ほどよい怒りを身につけませんか？</p>
-      <div class='col text-right'>
-        <%= image_tag 'dog.jpeg', class: 'col-8 float-end' %>
+      <div class='col text-right float-end'>
+      <div class='swiper-container'>
+      <div class='swiper-wrapper'>
+        <div class='swiper-slide'>
+          <div class='slide-img'>
+            <%= image_tag 'dog.jpeg', class: 'col-8 float-end' %>
+          </div>
+        </div>
+        <div class='swiper-slide'>
+          <div class='slide-img'>
+            <%= image_tag 'cat.jpeg', class: 'col-8 float-end' %>
+          </div>
+        </div>
+        <div class='swiper-slide'>
+          <div class='slide-img'>
+            <%= image_tag 'dog-family.jpeg', class: 'col-8 float-end' %>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
     <% if logged_in? %>
-      <a href='/records/new' class='start'>診断スタート<span class='iconify' data-icon='carbon:next-filled' style="color: #ff9a62; font-size: 50px;"></span></a>
+      <a href='/records/new' class='start'>診断スタート<span class='iconify' data-icon='carbon:next-filled' style='color: #ff9a62; font-size: 50px; z-index: 2;'></span></a>
     <% else %>
       <%= link_to '登録せずにはじめる', '/records/new', class: 'btn btn-outline-success top' %>
       <br>
@@ -16,3 +34,5 @@
     <% end %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'swiper' %>

@@ -6,7 +6,7 @@
   <% end %>
 
   <% if [@result.anger, @result.sorrow, @result.joy, @result.energy, @result.calm].sum.zero? %>
-    <p>エラー！！</p>
+    <p>エラーが発生しています。</p>
   <% else %>
     <p class='text-center pt-5 score'><span><%= @result.score %></span>点</p>
   <% end %>
@@ -23,14 +23,14 @@
   <% end %>
 
   <%= link_to 'https://twitter.com/share?url=#{request.url}&text=しつけ度『#{@result.score}点』だったよ！%0a%0aあなたもペットに理想的なしつけを身につけませんか？', target: '_blank', class: 'btn btn-info btn-rounded mx-auto mt-2' do %>
-    <i class='fab fa-twitter'></i>結果をツイートする
+    <i class='fab fa-twitter'></i>結果をshareしよう！
   <% end %>
 
   <% if logged_in? %>
     <%= link_to 'ホームへ戻る', root_path, class: 'btn btn-warning btn-rounded mx-auto mt-2' %>
     <%= link_to 'もう一度挑戦する', '/records/new', class: 'btn btn-secondary btn-rounded mx-auto mt-2' %>
-    <% if @result.score >= 25 %>
-      <%= link_to 'NEXT STEP', '/records/login_new', class: 'btn btn-success btn-rounded mx-auto mt-2' %>
+    <% if @result.score >= 70 %>
+      <%= link_to 'NEXT STEP', '/records/login_new', class: 'btn btn-success btn-rounded mx-auto mt-2' %> if 
     <% end %>
   <% else %>
     <%= link_to 'ホームへ戻る', root_path, class: 'btn btn-warning btn-rounded mx-auto mt-2' %>

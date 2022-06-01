@@ -4,6 +4,7 @@
 .top {
   align-items: flex-end;
   padding-bottom: 60px;
+  z-index: 2;
 }
 h1.col-4 {
   position: absolute;
@@ -24,6 +25,7 @@ h1.col-4 {
   -webkit-transform: rotate(-10deg);
 
   color: #000000b3;
+  z-index: 2;
 }
 .sentence {
 position: absolute;
@@ -52,6 +54,9 @@ color: #000000b3;
   width: 328px;
   height: 572px;
 }
+.slide-img {
+  margin-top: 20px;
+}
 a.start {
   position: absolute;
   width: 200px;
@@ -67,6 +72,7 @@ a.start {
   text-decoration: none;
 
   color: #000000b3;
+  z-index: 2;
 }
 a.start:hover {
   color: #df842f;
