@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   delete '/logout', to: 'user_sessions#destroy'
   
   resources :results, only: %i[show create]
+  resources :loginresults, only: %i[show create]
 
   get '/records/new' => 'records#new'
   get '/records/login_new' => 'records#login_new'
 
   resources :users do
-    resources :attachments, controller: 'user/attachments', only: %i[destroy]
+    resources :attachments, controller: 'users/attachments', only: %i[destroy]
   end
 end
