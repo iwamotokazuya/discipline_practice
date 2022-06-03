@@ -11,7 +11,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :name, length: { maximum: 10 }, presence: true
 
-  # validates :images, attachment: { purge: true, content_type: %r{\Aimage/(png|jpeg)\Z}, maximum: 524288000 }
   validate :image_length
 
   private

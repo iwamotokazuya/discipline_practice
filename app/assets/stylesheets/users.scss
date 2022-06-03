@@ -1,8 +1,45 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+#container-user {
+  background: rgba(243, 197, 155, 0.35);
+  height: auto;
+  width: 1200px;
+  margin: 0 auto;
+}
 .new-img{
-  width: 400px;
+  width: 100%;
+  border-right: 1px solid #f4b67b;
+  border-left: 1px solid #f4b67b;
+  border-bottom: 1px solid #f4b67b;
+  display: flex;
   object-fit: cover;
+}
+.form-group3 {
+  height: 70px;
+  width: 100%;
+  background: #fff;
+  text-align: left;
+  border-right: 1px solid #f4b67b;
+  border-left: 1px solid #f4b67b;
+  border-bottom: 1px solid #f4b67b;
+  display: flex;
+  align-items: center;
+}
+.btn.btn-outline-primary.login {
+  width: 240px;
+  margin-top: 20px;
+  margin-left: 25%;
+  padding: 10px 20px;
+}
+.wrapper.user {
+  border-radius: 10px;
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+}
+.btn.btn-danger.btn-rounded {
+  display: block;
+  width: 70px;
+  margin-top: 10px;
 }

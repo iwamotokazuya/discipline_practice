@@ -25,8 +25,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
       t.foreign_key :active_storage_blobs, column: :blob_id
     end
 
-    create_table :active_storage_variant_records, id: false do |t|
-      t.string :id, limit: 36, null: false, primary_key: true
+    create_table :active_storage_variant_records do |t|
       t.belongs_to :blob, null: false, index: false
       t.string :variation_digest, null: false
 

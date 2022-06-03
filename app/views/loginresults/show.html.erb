@@ -1,0 +1,32 @@
+<div id='container'>
+  <h1 class='pt-2 resultName'><%= @result.user.name %>さんの結果は・・・</h1>
+
+  <% if [@result.anger, @result.sorrow, @result.joy, @result.energy, @result.calm].sum.zero? %>
+    <p>エラーが発生しています。</p>
+  <% else %>
+    <p class='text-center pt-5 score'><span><%= @result.score %></span>点</p>
+  <% end %>
+
+  <p class='d-flex justify-content-end login-comment'><%= @comment %></p>
+  
+  <% if @result.score >= 25 %>
+    <p class='d-flex justify-content-end master'><span class="iconify" data-icon="material-symbols:perm-device-information-outline-sharp" style="color: #ff9a62; font-size: 50px;"></span><%= @result.user.name %>さんはしつけマスターとなったことをお知らせします。</p>
+  <% end %>
+</div>
+
+<div class='button'>
+  <% if @result.record_voice.attached? %>
+    <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'mx-auto mt-2') %>
+  <% else %>
+    <p>申し訳ございません。録音に失敗しました。</p>
+    <%= link_to 'もう一度やりなおす', '/records/login_new', class: 'btn btn-dark btn-rounded mx-auto mt-2' %>
+  <% end %>
+
+  <%= link_to 'https://twitter.com/share?url=#{request.url}&text=しつけをマスターしました。%0a%0aあなたもペットに理想的なしつけを身につけませんか？', target: '_blank', class: 'btn btn-info btn-rounded mx-auto mt-2' do %>
+    <i class='fab fa-twitter'></i>結果をshareしよう！
+  <% end %>
+
+    <%= link_to 'もう一度挑戦する', '/records/login_new', class: 'btn btn-secondary btn-rounded mx-auto mt-2' %>
+    <%= link_to 'ホームへ戻る', root_path, class: 'btn btn-warning btn-rounded mx-auto mt-2' %>
+</div>
+

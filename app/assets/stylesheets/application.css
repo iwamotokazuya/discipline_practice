@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ .title {
+  font-family: 'Grape Nuts', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 88px;
+  text-decoration: none;
+  
+  color: #000000;
+  }
+  .title:hover {
+    color: #df842f;
+  }
+  .navbar-right {
+    margin: 0 0 0 auto;
+  }
