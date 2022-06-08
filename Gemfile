@@ -58,6 +58,10 @@ group :development do
   gem 'rubocop-rails'
 end
 
+group :test do
+  gem 'capybara'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
