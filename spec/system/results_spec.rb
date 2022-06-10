@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Results", type: :system do
+RSpec.describe 'Results', type: :system do
   let(:result) { create :result, score: 70 }
   let(:comment) { create :comment, comment: '良いですね。この調子でいきましょう！' }
 
@@ -20,7 +20,7 @@ RSpec.describe "Results", type: :system do
       it 'ユーザー登録ボタンが表示されないこと' do
         expect(page).not_to have_css '.audio'
         find('.btn-dark').click
-      expect(page).to have_current_path('/records/new')
+        expect(page).to have_current_path('/records/new')
       end
     end
   end

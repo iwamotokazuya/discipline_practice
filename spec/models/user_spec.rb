@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'ネームは10文字以内であること' do
-      user = build(:user, name: "more_than_eleven")
+      user = build(:user, name: 'more_than_eleven')
       expect(user.valid?).to be false
     end
 
@@ -34,10 +34,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'パスワードは3文字以上であること' do
-      user = build(:user, password: "pw")
+      user = build(:user, password: 'pw')
       expect(user.valid?).to be false
     end
- 
+
     it 'パスワード確認がなければ登録できないこと' do
       user = build(:user, password_confirmation: nil)
       expect(user.valid?).to be false
