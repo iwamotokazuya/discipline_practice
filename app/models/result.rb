@@ -2,7 +2,7 @@ class Result < ApplicationRecord
   include IdGenerator
 
   belongs_to :user
-  
+
   has_one_attached :record_voice
 
   validates :score, numericality: { only_integer: true }, presence: true
@@ -31,12 +31,12 @@ class Result < ApplicationRecord
 
   def judge(formdata, response)
     hash = JSON.parse(response.body)
-      self.calm = hash['calm']
-      self.anger = hash['anger']
-      self.joy = hash['joy']
-      self.sorrow = hash['sorrow']
-      self.energy = hash['energy']
-      self.score = (25 + (0.5 * (anger) + 0.25 * (sorrow + energy))).round
+    self.calm = hash['calm']
+    self.anger = hash['anger']
+    self.joy = hash['joy']
+    self.sorrow = hash['sorrow']
+    self.energy = hash['energy']
+    self.score = (25 + (0.5 * (anger) + 0.25 * (sorrow + energy))).round
     record_voice.attach(formdata[:record_voice])
   end
 end

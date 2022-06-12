@@ -16,8 +16,6 @@ class User < ApplicationRecord
   private
 
   def image_length
-    if images.length >= 4
-      errors.add(:images, "は3枚以内にしてください")
-    end
+    errors.add(:images, 'は3枚以内にしてください') if images.length >= 4
   end
 end
