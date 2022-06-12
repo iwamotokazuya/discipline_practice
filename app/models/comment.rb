@@ -1,13 +1,12 @@
 class Comment < ApplicationRecord
-
   validates :comment, length: { maximum: 255 }, presence: true
 
   def self.find_comment(result)
     comment = if result.score >= 85
       '完璧です。言うことなし！'
-    elsif result.score >= 70 && result.score <=84
+    elsif result.score >= 70 && result.score <= 84
       '良いですね。この調子でいきましょう！'
-    elsif result.score >= 45 && result.score <=69
+    elsif result.score >= 45 && result.score <= 69
       'まぁまぁですね。もう少し怒っても良いかも！'
     elsif result.score < 45
       'もっと怒り要素を強めてみよう！'
