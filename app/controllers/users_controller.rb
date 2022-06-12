@@ -14,9 +14,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to root_path, notice: 'ユーザー登録に成功しました'
+      redirect_to root_path, info: 'ユーザー登録に成功しました'
     else
-      flash.now[:alert] = 'ユーザー登録に失敗しました'
+      flash.now[:warning] = 'ユーザー登録に失敗しました'
       render :new
     end
   end
@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      flash.now[:notice] = '登録情報を更新しました'
+      flash.now[:info] = '登録情報を更新しました'
     else
-      flash.now[:alert] = '登録情報の更新に失敗しました'
+      flash.now[:warning] = '登録情報の更新に失敗しました'
     end
     redirect_to root_path
   end
