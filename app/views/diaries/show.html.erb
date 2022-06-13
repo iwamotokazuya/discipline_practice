@@ -1,0 +1,22 @@
+<h1>
+  <strong>しつけた内容</strong>
+  <%= @diary.title %>
+</h1>
+
+<p>
+  <strong>日付</strong>
+  <%= @diary.start_time.strftime("%Y-%m-%d") %>
+</p>
+
+<p>
+  <strong>自己採点</strong>
+  <%= @diary.score %>点
+</p>
+
+<p>
+  <strong>詳細</strong>
+  <%= @diary.body %>
+</p>
+
+<%= link_to 'Edit', edit_diary_path(@diary) %> |
+<%= link_to 'Back', diaries_path %>

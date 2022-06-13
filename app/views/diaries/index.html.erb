@@ -1,0 +1,17 @@
+<div id='container-user'>
+  <div class='lead'>
+    <h1>しつけ成長記</h1>
+  </div>
+
+  <%= link_to '記録する', new_diary_path, class: 'btn btn-success' %>
+
+  <%= month_calendar events: @diaries do |date, diaries| %>
+    <%= date.day %>
+
+    <% diaries.each do |diary| %>
+      <div>
+        <%= link_to diary.title, diary %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
