@@ -1,0 +1,9 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+  simple_calendar:
+    previous: '<<'
+    next: '>>'
+    week: Woche

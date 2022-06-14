@@ -7,13 +7,13 @@
 
       <div class='loginform'>
         <div class='form-group1'>
-          <%= f.label :email, class: 'col-sm-4 control-label' %>
-            <%= f.text_field :email%>
+          <%= f.label :email, User.human_attribute_name(:email), class: 'col-sm-4 control-label' %>
+          <%= f.text_field :email %>
         </div>
 
         <div class='form-group2'>
-          <%= f.label :password, class: 'col-sm-4 control-label' %>
-            <%= f.password_field :password %>
+          <%= f.label :password, User.human_attribute_name(:password), class: 'col-sm-4 control-label' %>
+          <%= f.password_field :password %>
         </div>
         
         <%= f.submit 'ログイン', class: 'btn btn-outline-danger login' %>

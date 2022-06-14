@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+    attributes:
+      user:
+        name: 'ネーム'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        images: '画像'
+      diary:
+        title: 'しつけた内容'
+        start_time: 'しつけた日付'
+        score: 'しつけ自己採点'
+        body: '詳細(ペットの様子や改善点等を記入してください）'
