@@ -4,6 +4,6 @@ FactoryBot.define do
     body { "MyText" }
     start_time { "2022-06-12" }
     score { 1 }
-    user { nil }
+    user
   end
 end
