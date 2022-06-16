@@ -1,22 +1,29 @@
-<h1>
-  <strong>しつけた内容</strong>
-  <%= @diary.title %>
-</h1>
+<div id='container-user'>
+  <div class='lead'>
+    <h1>編集</h1>
+  </div>
+  <div class='wrapper user'>
+    <h1 class='dairy'>しつけた内容</h1>
+    <div class='form-group5'>
+    <p><%= @diary.title %></p>
+    </div>
 
-<p>
-  <strong>日付</strong>
-  <%= @diary.start_time.strftime("%Y-%m-%d") %>
-</p>
+    <h1 class='dairy'>日付</h1>
+    <div class='form-group5'>
+      <p><%= @diary.start_time.strftime("%Y年-%m月-%d日") %></p>
+    </div>
 
-<p>
-  <strong>自己採点</strong>
-  <%= @diary.score %>点
-</p>
+    <h1 class='dairy'>自己採点</h1>
+    <div class='form-group5'>
+      <p><%= @diary.score %>点</p>
+    </div>
 
-<p>
-  <strong>詳細</strong>
-  <%= @diary.body %>
-</p>
-
-<%= link_to 'Edit', edit_diary_path(@diary) %> |
-<%= link_to 'Back', diaries_path %>
+    <h1 class='dairy'>詳細</h1>
+    <div class='form-group5'>
+      <p><%= simple_format(@diary.body) %></p>
+    </div>
+    
+    <%= link_to '編集する', edit_diary_path(@diary), class: "btn btn-dark btn-rounded" %>
+    <%= link_to '戻る', diaries_path, class: "btn btn-light btn-rounded" %>
+  </div>
+</div>

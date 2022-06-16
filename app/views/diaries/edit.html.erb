@@ -4,6 +4,7 @@
   </div>
   <div class='wrapper user'>
     <%= form_with model: @diary do |f| %>
+      <%= render 'layouts/error_messages', object: f.object %>
       <div class='form-group1'>
         <%= f.label :title, class: 'col-sm-4 control-label' %>
         <%= f.text_field :title %>
