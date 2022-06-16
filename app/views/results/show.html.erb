@@ -8,7 +8,7 @@
   <% if [@result.anger, @result.sorrow, @result.joy, @result.energy, @result.calm].sum.zero? %>
     <p>エラーが発生しています。</p>
   <% else %>
-    <p class='text-center pt-5 score'><span><%= @result.score %></span>点</p>
+    <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
   <% end %>
 
   <p class='d-flex justify-content-end comment'><%= @comment %></p>
