@@ -30,7 +30,7 @@
         <% if @user.images.attached? %>
           <% @user.images.each do |image| %>
             <%= image_tag image.variant(resize:'500x400'), class: 'img-responsive', id: 'new-image' %>
-            <%= link_to '削除', user_attachment_path(@user.id, image.id), direct_upload: true, method: :delete, class: 'btn btn-danger btn-rounded' %>
+            <%= link_to '削除', user_attachment_path(@user.id, image.id), direct_upload: true, method: :delete, class: 'btn btn-danger btn-rounded image-destroy' %>
           <% end %>
         <% end %>
 

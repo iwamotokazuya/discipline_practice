@@ -1,6 +1,6 @@
 <div id='container-user'>
   <div class='lead'>
-    <h1>編集</h1>
+    <h1>詳細</h1>
   </div>
   <div class='wrapper user'>
     <h1 class='dairy'>しつけた内容</h1>
@@ -23,7 +23,8 @@
       <p><%= simple_format(@diary.body) %></p>
     </div>
     
-    <%= link_to '編集する', edit_diary_path(@diary), class: "btn btn-dark btn-rounded" %>
-    <%= link_to '戻る', diaries_path, class: "btn btn-light btn-rounded" %>
+    <%= link_to '編集する', edit_diary_path(@diary), class: 'btn btn-dark btn-rounded' %>
+    <%= link_to '削除する', diary_path(@diary), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn btn-danger btn-rounded destroy' %>
+    <%= link_to '戻る', diaries_path, class: 'btn btn-light btn-rounded' %>
   </div>
 </div>
