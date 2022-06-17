@@ -17,20 +17,13 @@ RSpec.describe 'Results', type: :system do
     end
 
     context '録音に失敗した場合' do
-      it 'ユーザー登録ボタンが表示されないこと' do
+      it 'オーディオが表示されないこと' do
+        visit result_path(result)
         expect(page).not_to have_css '.audio'
+        expect(page).to have_content('申し訳ございません。録音に失敗しました。')
         find('.btn-dark').click
         expect(page).to have_current_path('/records/new')
       end
-    end
-  end
-
-  describe '結果をshareしよう！を押した場合' do
-    it 'ツイッターシェアができる' do
-      visit result_path(result)
-      find('.btn-info').click
-      switch_to_window(windows.last)
-      expect(current_host).to eq('https://twitter.com/share?url=#{request.url}&text=しつけ度『#{@result.score}点』だったよ！%0a%0aあなたもペットに理想的なしつけを身につけませんか？')
     end
   end
 

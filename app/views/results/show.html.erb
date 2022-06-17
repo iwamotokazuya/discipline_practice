@@ -8,7 +8,7 @@
   <% if [@result.anger, @result.sorrow, @result.joy, @result.energy, @result.calm].sum.zero? %>
     <p>エラーが発生しています。</p>
   <% else %>
-    <p class='text-center pt-5 score'><span><%= @result.score %></span>点</p>
+    <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
   <% end %>
 
   <p class='d-flex justify-content-end comment'><%= @comment %></p>
@@ -16,7 +16,7 @@
 
 <div class='button'>
   <% if @result.record_voice.attached? %>
-    <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'mx-auto mt-2 audio') %>
+    <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'audio mx-auto mt-2') %>
   <% else %>
     <p>申し訳ございません。録音に失敗しました。</p>
     <%= link_to 'もう一度やりなおす', '/records/new', class: 'btn btn-dark btn-rounded mx-auto mt-2' %>

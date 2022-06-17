@@ -1,0 +1,31 @@
+<div id='container-user'>
+  <div class='lead'>
+    <h1>記録編集</h1>
+  </div>
+  <div class='wrapper user'>
+    <%= form_with model: @diary do |f| %>
+      <%= render 'layouts/error_messages', object: f.object %>
+      <div class='form-group1'>
+        <%= f.label :title, class: 'col-sm-4 control-label' %>
+        <%= f.text_field :title %>
+      </div>
+
+      <div class='form-group2'>
+        <%= f.label :start_time, class: 'col-sm-4 control-label' %>
+        <%= f.date_field :start_time %>
+      </div>
+
+      <div class='form-group3'>
+        <%= f.label :score, class: 'col-sm-4 control-label' %>
+        <%= f.number_field :score %>
+      </div>
+
+      <div class='form-group4'>
+        <%= f.label :body, class: 'col-sm-4 control-label' %>
+        <%= f.text_area :body, size: '20x5' %>
+      </div>
+      
+      <%= f.submit '登録', class: 'btn btn-outline-primary login' %>
+    <% end %>
+  </div>
+</div>

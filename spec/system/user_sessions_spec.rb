@@ -7,21 +7,21 @@ RSpec.describe 'UserSessions', type: :system do
     context 'ログインで正しい値が入力された場合' do
       it 'ログインが成功' do
         visit login_path
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: 'password'
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        # expect(page).to have_content 'ログインしました'
+        expect(page).to have_content 'ログインに成功しました'
         expect(page).to have_current_path root_path
       end
     end
 
     context 'ユーザー登録で誤った値が入力された場合' do
-      it 'emailが未記入' do
+      it 'メールアドレスが未記入' do
         visit login_path
-        fill_in 'Email', with: ''
-        fill_in 'Password', with: 'password'
+        fill_in 'メールアドレス', with: ''
+        fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        # expect(page).to have_content 'ログインに失敗しました'
+        expect(page).to have_content 'ログインに失敗しました'
         expect(page).to have_current_path login_path
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe 'UserSessions', type: :system do
     it 'ログアウトボタンをクリックしてログアウトが成功すること' do
       login(user)
       click_link 'ログアウト'
-      # expect(page).to have_content 'ログアウトしました'
+      expect(page).to have_content 'ログアウトしました'
       expect(page).to have_current_path root_path
     end
   end

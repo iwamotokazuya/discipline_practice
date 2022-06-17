@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :results, dependent: :destroy
+  has_many :diaries, dependent: :destroy
 
   has_many_attached :images
 
