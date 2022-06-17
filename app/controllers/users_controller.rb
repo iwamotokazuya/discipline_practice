@@ -24,11 +24,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      flash.now[:info] = '登録情報を更新しました'
+      redirect_to root_path, info: '登録情報を更新しました'
     else
       flash.now[:warning] = '登録情報の更新に失敗しました'
+      render :edit
     end
-    redirect_to root_path
   end
 
   private
