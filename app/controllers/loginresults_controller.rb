@@ -1,5 +1,5 @@
 class LoginresultsController < ApplicationController
-  skip_before_action :require_login, only: %i[create show]
+  before_action :require_login
 
   def create
     @result = Result.new

@@ -6,10 +6,10 @@ class ResultsController < ApplicationController
     @result.empath(result_params)
 
     @result.user_id = if logged_in?
-      current_user.id
-    else
-      1
-    end
+                        current_user.id
+                      else
+                        1
+                      end
     render json: { url: result_path(@result) } if @result.save
   end
 

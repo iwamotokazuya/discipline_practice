@@ -1,4 +1,6 @@
 class DiariesController < ApplicationController
+  before_action :require_login
+
   def index
     @diaries = Diary.all
   end
@@ -25,7 +27,7 @@ class DiariesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     @diary.destroy
-    redirect_to diaries_path, danger:'日記を削除しました'
+    redirect_to diaries_path, danger: '日記を削除しました'
   end
 
   def edit
@@ -46,5 +48,4 @@ class DiariesController < ApplicationController
   def diary_params
     params.require(:diary).permit(:title, :body, :start_time, :score, :user_id)
   end
-
 end

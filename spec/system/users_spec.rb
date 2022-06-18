@@ -91,7 +91,7 @@ RSpec.describe 'Users', type: :system do
 
     context '画像を複数選択しアップロードした場合' do
       it '画像が複数登録' do
-        attach_file('user_images', %w(spec/fixtures/images/runteq_man_top.png spec/fixtures/images/runteq_man.png))
+        attach_file('user_images', %w[spec/fixtures/images/runteq_man_top.png spec/fixtures/images/runteq_man.png])
         click_button '登録'
         visit edit_user_path(user)
         expect(page).to have_selector('img[src$="runteq_man.png"]')

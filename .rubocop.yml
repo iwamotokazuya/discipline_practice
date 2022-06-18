@@ -38,7 +38,7 @@ Metrics/PerceivedComplexity:
 
 # 循環的複雑度が高すぎないかをチェック（ifやforなどを1メソッド内で使いすぎている）
 Metrics/CyclomaticComplexity:
- Max: 10
+ Max: 30
 
 # メソッドの行数が多すぎないかをチェック
 Metrics/MethodLength:
