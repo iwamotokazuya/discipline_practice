@@ -36,7 +36,7 @@ class Result < ApplicationRecord
     self.joy = hash['joy']
     self.sorrow = hash['sorrow']
     self.energy = hash['energy']
-    self.score = (25 + (0.5 * (anger) + 0.25 * (sorrow + energy))).round
+    self.score = (25 + (0.5 * anger + 0.25 * (sorrow + energy))).round
     record_voice.attach(formdata[:record_voice])
   end
 end

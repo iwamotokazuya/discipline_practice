@@ -74,9 +74,9 @@ RSpec.describe 'Users', type: :system do
         attach_file('user_images', %w[spec/fixtures/images/runteq_man_top.png spec/fixtures/images/runteq_man.png])
         click_button '登録'
         visit edit_user_path(user)
-        expect(page).to have_selector('img[src$='runteq_man_top.png']')
+        expect(page).to have_selector('img[src$="runteq_man_top.png"]')
         click_on '削除', match: :first
-        expect(page).not_to have_selector('img[src$='runteq_man_top.png']')
+        expect(page).not_to have_selector('img[src$="runteq_man_top.png"]')
       end
     end
 
@@ -85,17 +85,17 @@ RSpec.describe 'Users', type: :system do
         attach_file('user_images', 'spec/fixtures/images/runteq_man.png')
         click_on '登録'
         visit edit_user_path(user)
-        expect(page).to have_selector('img[src$='runteq_man.png']')
+        expect(page).to have_selector('img[src$="runteq_man.png"]')
       end
     end
 
     context '画像を複数選択しアップロードした場合' do
       it '画像が複数登録' do
-        attach_file('user_images', %w(spec/fixtures/images/runteq_man_top.png spec/fixtures/images/runteq_man.png))
+        attach_file('user_images', %w[spec/fixtures/images/runteq_man_top.png spec/fixtures/images/runteq_man.png])
         click_button '登録'
         visit edit_user_path(user)
-        expect(page).to have_selector('img[src$='runteq_man.png']')
-        expect(page).to have_selector('img[src$='runteq_man_top.png']')
+        expect(page).to have_selector('img[src$="runteq_man.png"]')
+        expect(page).to have_selector('img[src$="runteq_man_top.png"]')
       end
     end
   end

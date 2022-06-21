@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # @result = Result.find(params[:result_id]) if params[:result_id]
   end
 
   def edit
