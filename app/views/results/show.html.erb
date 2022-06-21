@@ -29,7 +29,7 @@
   <% if logged_in? %>
     <%= link_to 'ホームへ戻る', root_path, class: 'btn btn-warning btn-rounded mx-auto mt-2' %>
     <%= link_to 'もう一度挑戦する', '/records/new', class: 'btn btn-secondary btn-rounded mx-auto mt-2' %>
-    <% if @result.score >= 25 %>
+    <% if @result.score >= 70 %>
       <%= link_to 'NEXT STEP', '/records/login_new', class: 'btn btn-success btn-rounded mx-auto mt-2' %>
     <% end %>
   <% else %>
