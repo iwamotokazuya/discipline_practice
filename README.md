@@ -1,6 +1,6 @@
 # アプリ名
 
-[しつけメーター](https://discipline-meter.herokuapp.com/）
+[しつけメーター](https://discipline-meter.herokuapp.com/)
 
 
 ### サービス概要
