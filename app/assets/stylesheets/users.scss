@@ -27,9 +27,11 @@
   align-items: center;
 }
 .btn.btn-outline-primary.login {
+  display: block;
   width: 240px;
   margin-top: 20px;
   margin-left: 25%;
+  margin-bottom: 20px;
   padding: 10px 20px;
 }
 .wrapper.user {
@@ -42,4 +44,5 @@
   display: block;
   width: 70px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
