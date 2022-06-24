@@ -4,12 +4,12 @@
   <% if [@result.anger, @result.sorrow, @result.joy, @result.energy, @result.calm].sum.zero? %>
     <p>エラーが発生しています。</p>
   <% else %>
-    <p class='text-center pt-5 score'><span><%= @result.score %></span>点</p>
+    <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
   <% end %>
 
   <p class='d-flex justify-content-end login-comment'><%= @comment %></p>
   
-  <% if @result.score >= 25 %>
+  <% if @result.score >= 70 %>
     <p class='d-flex justify-content-end master'><span class="iconify" data-icon="material-symbols:perm-device-information-outline-sharp" style="color: #ff9a62; font-size: 50px;"></span><%= @result.user.name %>さんはしつけマスターとなったことをお知らせします。</p>
   <% end %>
 </div>
