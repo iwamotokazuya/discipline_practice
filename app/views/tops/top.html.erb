@@ -26,9 +26,12 @@
       </div>
     </div>
     <% if logged_in? %>
-      <a href='/records/new' class='start'>診断スタート<span class='iconify' data-icon='carbon:next-filled' style='color: #ff9a62; font-size: 50px; z-index: 2;'></span></a>
+      <%= link_to new_record_path(part: 'all'), class: 'start' do %>
+        <p>診断スタート
+        <span class='iconify' data-icon='carbon:next-filled' style='color: #ff9a62; font-size: 50px; z-index: 2;'></span></p>
+      <% end %>
     <% else %>
-      <%= link_to '登録せずにはじめる', '/records/new', class: 'btn btn-outline-success top' %>
+      <%= link_to '登録せずにはじめる', new_record_path(part: 'all'), class: 'btn btn-outline-success top' %>
       <br>
       <%= link_to 'ログイン', login_path, class: 'btn btn-outline-danger top' %>
     <% end %>
