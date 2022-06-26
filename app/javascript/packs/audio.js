@@ -4,6 +4,8 @@ axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token'
 
 const record = document.getElementById('record');
 const sentence = document.getElementById('sentence');
+let url = new URL(window.location.href);
+let params = url.searchParams;
 
 let stream = null;
 let audio_sample_rate = null;
@@ -84,7 +86,23 @@ let exportWAV = function (audioData) {
 let sendToResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
-  axios.post('/results', formdata, {
+  axios.post('/results?part=all', formdata, {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
+  })
+  .then(function(response) {
+    window.location.href = response.data.url
+  })
+  .catch(function(error) {
+    console.log(error.response);
+  })
+}
+
+let sendToLoginResult = function() {
+  let formdata = new FormData();
+  formdata.append('record_voice', blob);
+  axios.post('/results?part=login', formdata, {
     headers: {
       'content-type': 'multipart/form-data',
     },
@@ -120,7 +138,11 @@ let handleSuccess = function (stream) {
 
   const timeoutId = setTimeout(function() {
     saveAudio();
-    sendToResult(blob);
+    if( params.has('part') ) {
+      sendToResult(blob);
+    } else {
+      sendToLoginResult(blob);
+    }
   }, 5000);
 };
 

@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
   skip_before_action :require_login, only: %i[create show]
+  before_action :require_login, only: %i[loginresults]
 
   def create
     @result = Result.new
@@ -10,10 +11,19 @@ class ResultsController < ApplicationController
                       else
                         1
                       end
-    render json: { url: result_path(@result) } if @result.save
+    if params[:part] == 'all'
+      render json: { url: result_path(@result) } if @result.save
+    else
+      render json: { url: loginresults_result_path(@result) } if @result.save
+    end
   end
 
   def show
+    @result = Result.find(params[:id])
+    @comment = Comment.find_comment(@result)
+  end
+
+  def loginresults
     @result = Result.find(params[:id])
     @comment = Comment.find_comment(@result)
   end
