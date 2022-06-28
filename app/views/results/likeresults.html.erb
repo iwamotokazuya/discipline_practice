@@ -1,0 +1,18 @@
+<div id='container'>
+  <h1 class='pt-2 resultName'><%= @result.user.name %>さんの結果は・・・</h1>
+  <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
+
+  <p class='d-flex justify-content-end comment'><%= @comment %></p>
+</div>
+
+<div class='button'>
+  <%= render 'results/like_button' %>
+  <% if @result.record_voice.attached? %>
+    <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'audio mx-auto mt-2') %>
+  <% else %>
+    <p>申し訳ございません。録音に失敗しました。</p>
+    <%= link_to 'もう一度やりなおす', new_record_path(part: 'all'), class: 'btn btn-dark btn-rounded mx-auto mt-2' %>
+  <% end %>
+
+  <%= link_to 'ホームへ戻る', root_path, class: 'btn btn-warning btn-rounded mx-auto mt-2' %>
+</div>

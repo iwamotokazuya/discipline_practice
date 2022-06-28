@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
   skip_before_action :require_login, only: %i[create show]
-  before_action :require_login, only: %i[loginresults likes]
+  before_action :require_login, only: %i[loginresults likes likeresults]
 
   def create
     @result = Result.new
@@ -25,6 +25,11 @@ class ResultsController < ApplicationController
   end
 
   def loginresults
+    @result = Result.find(params[:id])
+    @comment = Comment.find_comment(@result)
+  end
+
+  def likeresults
     @result = Result.find(params[:id])
     @comment = Comment.find_comment(@result)
   end

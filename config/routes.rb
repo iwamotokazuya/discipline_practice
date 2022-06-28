@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :results, only: %i[show create] do
     member do
       get 'loginresults'
+      get 'likeresults'
     end
     collection do
       get :likes

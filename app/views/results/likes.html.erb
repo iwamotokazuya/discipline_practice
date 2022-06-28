@@ -8,7 +8,7 @@
 
     <% results.each do |result| %>
       <div>
-        <%= link_to result.score, result_path(result) %>点
+        <%= link_to result.score, likeresults_result_path(result) %>点
       </div>
     <% end %>
   <% end %>
