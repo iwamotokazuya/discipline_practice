@@ -1,0 +1,5 @@
+<% if current_user.like?(@result) %>
+  <%= render 'results/unlike' %>
+<% else %>
+  <%= render 'results/like' %>
+<% end %>

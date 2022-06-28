@@ -9,8 +9,12 @@ Rails.application.routes.draw do
     member do
       get 'loginresults'
     end
+    collection do
+      get :likes
+    end
   end
-  resources :loginresults, only: %i[show create]
+
+  resources :likes, only: %i[create destroy]
 
   resources :records, only: %i[new] do
     collection do

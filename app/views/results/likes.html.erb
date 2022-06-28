@@ -1,0 +1,15 @@
+<div id='container-user'>
+  <div class='lead'>
+    <h1>お気に入り一覧</h1>
+  </div>
+
+  <%= month_calendar events: @like_results do |date, results| %>
+    <%= date.day %>
+
+    <% results.each do |result| %>
+      <div>
+        <%= link_to result.score, result_path(result) %>点
+      </div>
+    <% end %>
+  <% end %>
+</div>
