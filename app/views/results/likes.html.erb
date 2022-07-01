@@ -7,9 +7,7 @@
     <%= date.day %>
 
     <% results.each do |result| %>
-      <div>
-        <%= link_to result.score, likeresults_result_path(result) %>点
-      </div>
+        <%= link_to result.score, likeresults_result_path(result), class:'likescore' %>点
     <% end %>
   <% end %>
 </div>
