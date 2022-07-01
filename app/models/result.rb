@@ -2,6 +2,7 @@ class Result < ApplicationRecord
   include IdGenerator
 
   belongs_to :user
+  has_one :like, dependent: :destroy
 
   has_one_attached :record_voice
 

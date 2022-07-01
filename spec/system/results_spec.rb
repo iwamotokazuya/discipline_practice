@@ -22,7 +22,7 @@ RSpec.describe 'Results', type: :system do
         expect(page).not_to have_css '.audio'
         expect(page).to have_content('申し訳ございません。録音に失敗しました。')
         find('.btn-dark').click
-        expect(page).to have_current_path('/records/new')
+        expect(page).to have_current_path(new_record_path(part: 'all'))
       end
     end
   end
@@ -53,7 +53,7 @@ RSpec.describe 'Results', type: :system do
       it '録音画面にリダイレクトする' do
         expect(page).to have_css '.btn-secondary'
         find('.btn-secondary').click
-        expect(page).to have_current_path('/records/new')
+        expect(page).to have_current_path(new_record_path(part: 'all'))
       end
     end
 
@@ -61,7 +61,34 @@ RSpec.describe 'Results', type: :system do
       it '録音画面にリダイレクトする' do
         expect(page).to have_css '.btn-success'
         find('.btn-success').click
-        expect(page).to have_current_path('/records/login_new')
+        expect(page).to have_current_path(login_new_records_path)
+      end
+    end
+
+    context 'お気に入りボタンをクリック' do
+      it 'お気に入りになる' do
+        find('.like').click
+        expect(page).to have_css '.unlike'
+        expect(page).to have_content('お気に入りに登録しました。')
+        expect(page).to have_current_path(result_path(result))
+      end
+    end
+  end
+
+  describe 'お気に入りの画面' do
+    let(:user) { create(:user) }
+    let!(:like) { create(:like, result: result, user: user) }
+
+    before do
+      login(user)
+      visit likes_results_path
+    end
+
+    context 'お気に入り一覧' do
+      it 'お気に入りが表示される' do
+        like_list = result.score
+        expect(page).to have_content like_list[0]
+        expect(current_path).to eq likes_results_path
       end
     end
   end

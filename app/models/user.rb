@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :results, dependent: :destroy
   has_many :diaries, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_results, through: :likes, source: :result
 
   has_many_attached :images
 
@@ -13,6 +15,18 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 10 }, presence: true
 
   validate :image_length
+
+  def like(result)
+    like_results << result
+  end
+
+  def unlike(result)
+    like_results.destroy(result)
+  end
+
+  def like?(result)
+    like_results.include?(result)
+  end
 
   private
 
