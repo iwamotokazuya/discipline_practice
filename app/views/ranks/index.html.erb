@@ -1,0 +1,15 @@
+<div id='container-user'>
+  <div class='lead'>
+    <h1>難易度選択</h1>
+  </div>
+  <% @ranks.each do |rank| %>
+    <%= link_to record_rank_path(id: rank, part: 'all') do %>
+      <div class='text-left'>
+        <%= rank.subtitle %>
+      </div>
+      <div class='text-center mt-4'>
+        <%= rank.level %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

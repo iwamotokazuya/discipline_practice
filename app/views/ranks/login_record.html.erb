@@ -1,0 +1,21 @@
+<div class='wrapper record'>
+  <div class='swiper-container-login'>
+    <div class='swiper-wrapper'>
+      <% if current_user.images.present? %>
+        <% current_user.images.each do |image| %>
+          <div class='swiper-slide'>
+            <%= image_tag image.variant(resize:'1200x400').processed, id: 'new-image' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <p id='record'><span class='iconify mic2' data-icon='entypo:mic'></span></p>
+</div>
+<div class='text-center'>
+  <p id='sentence'>クリックで録音開始 ※5秒間計測</P><br>
+  <p class='word'>一言で怒ってね</P>
+</div>
+
+<%= javascript_pack_tag 'audio' %>
+<%= javascript_pack_tag 'recordSwiper' %>

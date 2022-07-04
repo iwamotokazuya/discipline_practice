@@ -1,0 +1,9 @@
+<div class='wrapper record'>
+  <h1 class='recording' data-id>しつけ診断<br>~<%= @rank.level %>~</h1>
+  <p id='record'><span class='iconify mic' data-icon='entypo:mic'></span></p>
+</div>
+<div class='text-center'>
+  <p id='sentence'>クリックで録音開始 ※5秒間計測</P><br>
+  <p class='word'>一言で怒ってね</P>
+</div>
+<%= javascript_pack_tag 'audio' %>
