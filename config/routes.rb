@@ -17,6 +17,13 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
 
+  resources :ranks, only: %i[index] do
+    member do
+      get 'record'
+      get 'login_record'
+    end
+  end
+
   resources :records, only: %i[new] do
     collection do
       get 'login_new'
