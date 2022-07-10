@@ -2,14 +2,65 @@
   <div class='lead'>
     <h1>難易度選択</h1>
   </div>
-  <% @ranks.each do |rank| %>
-    <%= link_to record_rank_path(id: rank, part: 'all') do %>
-      <div class='text-left'>
-        <%= rank.subtitle %>
+  <% if current_page?(ranks_path(next: 'step')) %>
+    <div class='row'>
+      <div class='col-sm-6'>
+        <div class='card'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= @biggner.level %></h5>
+            <p class='card-text'><%= @biggner.subtitle %></p>
+            <%= link_to '挑戦する', login_record_rank_path(id: 1, begginer: 'all'), class:'btn btn-primary' %>
+          </div>
+        </div>
       </div>
-      <div class='text-center mt-4'>
-        <%= rank.level %>
+      <div class='col-sm-6'>
+        <div class='card'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= @intermediate.level %></h5>
+            <p class='card-text'><%= @intermediate.subtitle %></p>
+            <%= link_to '挑戦する', login_record_rank_path(id: 2, intermediate: 'all'), class:'btn btn-primary' %>
+          </div>
+        </div>
       </div>
-    <% end %>
+      <div class='col-sm-6'>
+        <div class='card'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= @advanced.level %></h5>
+            <p class='card-text'><%= @advanced.subtitle %></p>
+            <%= link_to '挑戦する', login_record_rank_path(id: 3, advanced: 'all'), class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+      <div class='row'>
+      <div class='col-sm-6'>
+        <div class='card'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= @biggner.level %></h5>
+            <p class='card-text'><%= @biggner.subtitle %></p>
+            <%= link_to '挑戦する', record_rank_path(id: 1, part: 'all', begginer: 'all'), class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-6'>
+        <div class='card'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= @intermediate.level %></h5>
+            <p class='card-text'><%= @intermediate.subtitle %></p>
+            <%= link_to '挑戦する', record_rank_path(id: 2, part: 'all', intermediate: 'all'), class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-6'>
+        <div class='card'>
+          <div class='card-body'>
+            <h5 class='card-title'><%= @advanced.level %></h5>
+            <p class='card-text'><%= @advanced.subtitle %></p>
+            <%= link_to '挑戦する', record_rank_path(id: 3, part: 'all', advanced: 'all'), class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

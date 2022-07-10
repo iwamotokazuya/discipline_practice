@@ -1,5 +1,6 @@
 <div id='container'>
   <h1 class='pt-2 resultName'><%= @result.user.name %>さんの結果は・・・</h1>
+  <h2 class='pt-2 resultName'>難易度: <%= @rank.level %></h2>
   <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
 
   <p class='d-flex justify-content-end comment'><%= @comment %></p>
