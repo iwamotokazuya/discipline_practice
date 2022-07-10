@@ -25,7 +25,6 @@
     <p>申し訳ございません。録音に失敗しました。</p>
     <%= link_to 'もう一度やりなおす', ranks_path, class: 'btn btn-dark btn-rounded mx-auto mt-2' %>
   <% end %>
-<% end %>
 
   <%= link_to 'https://twitter.com/share?url=#{request.url}&text=しつけ度『難易度:#{@rank.level}が#{@result.score}点』だったよ！%0a%0aあなたもペットに理想的なしつけを身につけませんか？', target: '_blank', class: 'btn btn-info btn-rounded mx-auto mt-2' do %>
     <i class='fab fa-twitter'></i>結果をshareしよう！
