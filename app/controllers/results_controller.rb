@@ -6,12 +6,12 @@ class ResultsController < ApplicationController
   def create
     @result = Result.new
     @result.empath(result_params)
-
     @result.user_id = if logged_in?
                         current_user.id
                       else
                         1
                       end
+    @result.scoreRank
     @result.start_time = Date.today
     if params[:part] == 'all'
       render json: { url: result_path(@result) } if @result.save
