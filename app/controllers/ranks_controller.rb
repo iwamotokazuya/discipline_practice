@@ -3,7 +3,9 @@ class RanksController < ApplicationController
   before_action :require_login, only: %i[login_record]
 
   def index
-    @ranks = Rank.all
+    @biggner = Rank.find(1)
+    @intermediate = Rank.find(2)
+    @advanced = Rank.find(3)
   end
 
   def record
