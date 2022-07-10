@@ -86,6 +86,13 @@ let exportWAV = function (audioData) {
 let sendToResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
+  if( params.has('begginer') ) {
+    formdata.append('rank_id', 1);
+  } else if( params.has('intermediate') ) {
+    formdata.append('rank_id', 2);
+  } else if( params.has('advanced') ) {
+    formdata.append('rank_id', 3);
+  }
   axios.post('/results?part=all', formdata, {
     headers: {
       'content-type': 'multipart/form-data',
@@ -102,6 +109,13 @@ let sendToResult = function() {
 let sendToLoginResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
+  if( params.has('begginer') ) {
+    formdata.append('rank_id', 1);
+  } else if( params.has('intermediate') ) {
+    formdata.append('rank_id', 2);
+  } else if( params.has('advanced') ) {
+    formdata.append('rank_id', 3);
+  }
   axios.post('/results?part=login', formdata, {
     headers: {
       'content-type': 'multipart/form-data',
