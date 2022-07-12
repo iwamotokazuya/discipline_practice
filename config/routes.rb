@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :likes, only: %i[create destroy]
-
   resources :ranks, only: %i[index] do
     member do
       get 'record'
@@ -24,15 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :records, only: %i[new] do
-    collection do
-      get 'login_new'
-    end
-  end
+  resources :likes, only: %i[create destroy]
+  resources :diaries
 
   resources :users do
     resources :attachments, controller: 'users/attachments', only: %i[destroy]
   end
-
-  resources :diaries
 end
