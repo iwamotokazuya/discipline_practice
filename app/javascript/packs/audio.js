@@ -86,7 +86,7 @@ let exportWAV = function (audioData) {
 let sendToResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
-  if( params.has('begginer') ) {
+  if( params.has('beginner') ) {
     formdata.append('rank_id', 1);
   } else if( params.has('intermediate') ) {
     formdata.append('rank_id', 2);
@@ -109,7 +109,7 @@ let sendToResult = function() {
 let sendToLoginResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
-  if( params.has('begginer') ) {
+  if( params.has('beginner') ) {
     formdata.append('rank_id', 1);
   } else if( params.has('intermediate') ) {
     formdata.append('rank_id', 2);
