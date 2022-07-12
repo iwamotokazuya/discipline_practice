@@ -2,6 +2,7 @@ class Result < ApplicationRecord
   include IdGenerator
 
   belongs_to :user
+  belongs_to :rank
   has_one :like, dependent: :destroy
 
   has_one_attached :record_voice
@@ -37,7 +38,17 @@ class Result < ApplicationRecord
     self.joy = hash['joy']
     self.sorrow = hash['sorrow']
     self.energy = hash['energy']
-    self.score = (25 + (0.5 * anger + 0.25 * (sorrow + energy))).round
+    self.rank_id = formdata[:rank_id]
     record_voice.attach(formdata[:record_voice])
+  end
+
+  def scoreRank
+    if self.rank_id == 1
+      self.score = 25 + self.anger + (0.25 * (self.energy + self.calm))
+    elsif self.rank_id == 2
+      self.score = self.anger + (0.5 * (self.energy + self.calm))
+    elsif self.rank_id == 3
+      self.score = self.anger * 2
+    end
   end
 end
