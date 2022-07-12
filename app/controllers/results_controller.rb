@@ -39,6 +39,8 @@ class ResultsController < ApplicationController
   def set_result
     @result = Result.find(params[:id])
     @rank = Rank.find(@result.rank_id)
-    @comment = Comment.find_comment(@result)
+    @beginner_comment = Comment.beginner_comment(@result)
+    @intermediate_comment = Comment.intermediate_comment(@result)
+    @advanced_comment = Comment.advanced_comment(@result)
   end
 end
