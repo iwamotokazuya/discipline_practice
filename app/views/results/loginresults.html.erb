@@ -8,8 +8,14 @@
     <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
   <% end %>
 
-  <p class='d-flex justify-content-end login-comment'><%= @comment %></p>
-  
+  <% if @rank.id == 1 %>
+    <p class='d-flex justify-content-end comment'><%= @beginner_comment %></p>
+  <% elsif @rank.id == 2 %>
+    <p class='d-flex justify-content-end comment'><%= @intermediate_comment %></p>
+  <% else %>
+    <p class='d-flex justify-content-end comment'><%= @advanced_comment %></p>
+  <% end %>
+
   <% if @result.score >= 70 %>
     <p class='d-flex justify-content-end master'><span class="iconify" data-icon="material-symbols:perm-device-information-outline-sharp" style="color: #ff9a62; font-size: 50px;"></span><%= @result.user.name %>さんはしつけマスターとなったことをお知らせします。</p>
   <% end %>

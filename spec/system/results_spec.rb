@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Results', type: :system do
   let(:result) { create :result, score: 70 }
-  let(:comment) { create :comment, comment: '良いですね。この調子でいきましょう！' }
+  let(:comment) { create :comment, comment: '素晴らしい怒りですね。この調子でいきましょう！' }
 
   describe '結果表示' do
     before do
@@ -22,7 +22,7 @@ RSpec.describe 'Results', type: :system do
         expect(page).not_to have_css '.audio'
         expect(page).to have_content('申し訳ございません。録音に失敗しました。')
         find('.btn-dark').click
-        expect(page).to have_current_path(new_record_path(part: 'all'))
+        expect(page).to have_current_path(ranks_path)
       end
     end
   end
