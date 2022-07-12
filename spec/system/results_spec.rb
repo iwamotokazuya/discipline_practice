@@ -53,7 +53,7 @@ RSpec.describe 'Results', type: :system do
       it '録音画面にリダイレクトする' do
         expect(page).to have_css '.btn-secondary'
         find('.btn-secondary').click
-        expect(page).to have_current_path(new_record_path(part: 'all'))
+        expect(page).to have_current_path(ranks_path)
       end
     end
 
@@ -61,7 +61,7 @@ RSpec.describe 'Results', type: :system do
       it '録音画面にリダイレクトする' do
         expect(page).to have_css '.btn-success'
         find('.btn-success').click
-        expect(page).to have_current_path(login_new_records_path)
+        expect(page).to have_current_path(ranks_path(next: 'step'))
       end
     end
 
