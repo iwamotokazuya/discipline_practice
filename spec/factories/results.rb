@@ -8,6 +8,7 @@ FactoryBot.define do
     energy { rand(50) }
     start_time { '2022-06-12' }
     user
+    rank
     record_voice { Rack::Test::UploadedFile.new('spec/fixtures/audio/femal-test.wav', 'audio/wav') }
   end
 end

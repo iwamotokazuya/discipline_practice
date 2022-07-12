@@ -1,8 +1,15 @@
 <div id='container'>
   <h1 class='pt-2 resultName'><%= @result.user.name %>さんの結果は・・・</h1>
+  <h2 class='pt-2 resultName'>難易度: <%= @rank.level %></h2>
   <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
 
-  <p class='d-flex justify-content-end comment'><%= @comment %></p>
+  <% if @rank.id == 1 %>
+    <p class='d-flex justify-content-end comment'><%= @beginner_comment %></p>
+  <% elsif @rank.id == 2 %>
+    <p class='d-flex justify-content-end comment'><%= @intermediate_comment %></p>
+  <% else %>
+    <p class='d-flex justify-content-end comment'><%= @advanced_comment %></p>
+  <% end %>
 </div>
 
 <div class='button'>
@@ -11,7 +18,6 @@
     <%= audio_tag(url_for(@result.record_voice), controls: true, preload: 'metadata', class: 'audio mx-auto mt-2') %>
   <% else %>
     <p>申し訳ございません。録音に失敗しました。</p>
-    <%= link_to 'もう一度やりなおす', new_record_path(part: 'all'), class: 'btn btn-dark btn-rounded mx-auto mt-2' %>
   <% end %>
 
   <%= link_to '戻る', likes_results_path, class: 'btn btn-light btn-rounded mx-auto mt-2' %>

@@ -1,27 +1,11 @@
-// Place all the styles related to the records controller here.
+// Place all the styles related to the ranks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-h1.recording {
-position: absolute;
-width: 509px;
-height: 65px;
-top: 200px;
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 54px;
-line-height: 84px;
-display: flex;
-align-items: center;
-text-align: center;
-
-color: #df842f;
-}
 .wrapper.record {
+  position: relative;
   background: rgba(243, 197, 155, 0.35);
   border-radius: 10px;
-  height: 450px;
+  height: 500px;
 }
 .iconify.mic {
   position: absolute;
@@ -51,20 +35,20 @@ p.word {
   line-height: 10px;
   color: #df842f;
 }
-.swiper-container-login {
+.wrapper.record .swiper-container-login {
   position: absolute;
   width: 600px;
   height: 450px;
   top: 50%;
-  left: 5%;
-  transform: translate(5%, -55%)
+  left: 20%;
+  transform: translate(10%, -45%)
 }
-.iconify.mic2 {
+.wrapper.record .iconify.mic2 {
   position: absolute;
   font-size: 300px;
   height: 450px;
   top: 50%;
-  left: 70%;
+  left: 80%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
@@ -73,4 +57,24 @@ p.word {
 }
 .iconify.mic2 :active {
   color: #df842f;
+}
+.rank {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 100;
+  font-size: 54px;
+  color: #df842f;
+}
+.card {
+  width: 30rem;
+  background: #df842f;
+  margin: 3em auto 3em;
+}
+.card-title {
+  font-family: 'Kiwi Maru', serif;
+  font-weight: 50;
+  font-size: 42px;
+  color: #df842f;
+}
+.card-text {
+  font-size: 24px;
 }

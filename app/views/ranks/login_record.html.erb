@@ -1,4 +1,11 @@
 <div class='wrapper record'>
+  <% if @rank.id == 1 %>
+    <div class='pt-2 rank'>難易度:<%= @rank.level %></div>
+  <% elsif @rank.id == 2 %>
+    <div class='pt-2 rank'>難易度:<%= @rank.level %></div>
+  <% else %>
+    <div class='pt-2 rank'>難易度:<%= @rank.level %></div>
+  <% end %>
   <div class='swiper-container-login'>
     <div class='swiper-wrapper'>
       <% if current_user.images.present? %>
@@ -10,7 +17,7 @@
       <% end %>
     </div>
   </div>
-    <p id='record'><span class='iconify mic2' data-icon='entypo:mic'></span></p>
+  <p id='record'><span class='iconify mic2' data-icon='entypo:mic'></span></p>
 </div>
 <div class='text-center'>
   <p id='sentence'>クリックで録音開始 ※5秒間計測</P><br>

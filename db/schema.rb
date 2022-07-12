@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_093955) do
+ActiveRecord::Schema.define(version: 2022_07_03_020223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 2022_06_28_093955) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "ranks", force: :cascade do |t|
+    t.string "level", null: false
+    t.string "subtitle", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "results", id: { type: :string, limit: 36 }, force: :cascade do |t|
     t.integer "score", null: false
     t.integer "calm", null: false
@@ -81,6 +88,8 @@ ActiveRecord::Schema.define(version: 2022_06_28_093955) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.date "start_time"
+    t.bigint "rank_id"
+    t.index ["rank_id"], name: "index_results_on_rank_id"
     t.index ["user_id"], name: "index_results_on_user_id"
   end
 
@@ -99,5 +108,6 @@ ActiveRecord::Schema.define(version: 2022_06_28_093955) do
   add_foreign_key "diaries", "users"
   add_foreign_key "likes", "results"
   add_foreign_key "likes", "users"
+  add_foreign_key "results", "ranks"
   add_foreign_key "results", "users"
 end

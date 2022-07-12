@@ -1,16 +1,17 @@
 class ResultsController < ApplicationController
   skip_before_action :require_login, only: %i[create show]
   before_action :require_login, only: %i[loginresults likes likeresults]
+  before_action :set_result, only: %i[show loginresults likeresults]
 
   def create
     @result = Result.new
     @result.empath(result_params)
-
     @result.user_id = if logged_in?
                         current_user.id
                       else
                         1
                       end
+    @result.scoreRank
     @result.start_time = Date.today
     if params[:part] == 'all'
       render json: { url: result_path(@result) } if @result.save
@@ -19,20 +20,11 @@ class ResultsController < ApplicationController
     end
   end
 
-  def show
-    @result = Result.find(params[:id])
-    @comment = Comment.find_comment(@result)
-  end
+  def show; end
 
-  def loginresults
-    @result = Result.find(params[:id])
-    @comment = Comment.find_comment(@result)
-  end
+  def loginresults; end
 
-  def likeresults
-    @result = Result.find(params[:id])
-    @comment = Comment.find_comment(@result)
-  end
+  def likeresults; end
 
   def likes
     @like_results = current_user.like_results.includes(:user)
@@ -41,6 +33,14 @@ class ResultsController < ApplicationController
   private
 
   def result_params
-    params.permit(:record_voice)
+    params.permit(:record_voice, :rank_id)
+  end
+
+  def set_result
+    @result = Result.find(params[:id])
+    @rank = Rank.find(@result.rank_id)
+    @beginner_comment = Comment.beginner_comment(@result)
+    @intermediate_comment = Comment.intermediate_comment(@result)
+    @advanced_comment = Comment.advanced_comment(@result)
   end
 end
