@@ -17,5 +17,4 @@ RSpec.describe 'Ranks', type: :system do
       expect(page).to have_current_path(record_rank_path(id: 1, part: 'all', beginner: 'all'))
     end
   end
-  end
 end
