@@ -152,7 +152,7 @@ let handleSuccess = function (stream) {
 
   const timeoutId = setTimeout(function() {
     saveAudio();
-    if( params.has('part') ) {
+    if( params.has('part=all') ) {
       sendToResult(blob);
     } else {
       sendToLoginResult(blob);

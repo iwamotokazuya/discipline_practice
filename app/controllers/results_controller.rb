@@ -33,7 +33,7 @@ class ResultsController < ApplicationController
   private
 
   def result_params
-    params.permit(:record_voice, :rank_id)
+    params.permit(:record_voice, :rank_id, :part)
   end
 
   def set_result

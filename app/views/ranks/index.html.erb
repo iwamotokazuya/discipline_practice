@@ -9,7 +9,7 @@
           <div class='card-body'>
             <h5 class='card-title'><%= @beginner.level %></h5>
             <p class='card-text'><%= @beginner.subtitle %></p>
-            <%= link_to '挑戦する', login_record_rank_path(id: 1, beginner: 'all'), class:'btn btn-primary beginner' %>
+            <%= link_to '挑戦する', login_record_rank_path(id: 1, part: 'login', beginner: 'all'), class:'btn btn-primary beginner' %>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
           <div class='card-body'>
             <h5 class='card-title'><%= @intermediate.level %></h5>
             <p class='card-text'><%= @intermediate.subtitle %></p>
-            <%= link_to '挑戦する', login_record_rank_path(id: 2, intermediate: 'all'), class:'btn btn-primary intermediate' %>
+            <%= link_to '挑戦する', login_record_rank_path(id: 2, part: 'login', intermediate: 'all'), class:'btn btn-primary intermediate' %>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
           <div class='card-body'>
             <h5 class='card-title'><%= @advanced.level %></h5>
             <p class='card-text'><%= @advanced.subtitle %></p>
-            <%= link_to '挑戦する', login_record_rank_path(id: 3, advanced: 'all'), class:'btn btn-primary advanced' %>
+            <%= link_to '挑戦する', login_record_rank_path(id: 3, part: 'login', advanced: 'all'), class:'btn btn-primary advanced' %>
           </div>
         </div>
       </div>
