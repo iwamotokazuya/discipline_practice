@@ -44,11 +44,11 @@ class Result < ApplicationRecord
 
   def scoreRank
     if self.rank_id == 1
-      self.score = 25 + self.anger + (0.25 * (self.energy + self.calm))
+      self.score = (25 + self.anger + (0.25 * (self.energy + self.calm))).round
     elsif self.rank_id == 2
-      self.score = self.anger + (0.5 * (self.energy + self.calm))
+      self.score = (self.anger + (0.5 * (self.energy + self.calm))).round
     elsif self.rank_id == 3
-      self.score = self.anger * 2
+      self.score = (self.anger * 2).round
     end
   end
 end
