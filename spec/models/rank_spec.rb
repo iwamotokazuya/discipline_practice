@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Rank, type: :model do
-  let(:rank) { create :rank, :beginner, :intermediate, :advanced }
+  let(:rank) { create :rank }
 
   describe 'バリデーション' do
     it '値があればバリデーションが通ること' do
