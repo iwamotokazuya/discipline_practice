@@ -15,14 +15,14 @@
  *= require_self
  */
  .title {
-  font-family: 'Grape Nuts', cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 88px;
-  text-decoration: none;
-  
-  color: #000000;
+    font-family: 'Grape Nuts', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 88px;
+    text-decoration: none;
+    
+    color: #000000;
   }
   .title:hover {
     color: #df842f;
@@ -30,3 +30,32 @@
   .navbar-right {
     margin: 0 0 0 auto;
   }
+ .footer {
+   color: #808080;
+   background: #e5e5e5;
+   text-align: center;
+   padding: 30px;
+  }
+ .footer a {
+   color: #808080;
+   text-decoration: none;
+ }
+ .footer a:hover {
+   text-decoration: underline;
+  }
+ .footer .menu {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+ .footer .menu li {
+   margin: 0;
+   padding: 0 20px;
+ }
+ .footer .copyright {
+   margin: 0;
+   padding: 20px 0 0 0;
+ }
