@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'tops#top'
+  get 'privacy', to: 'tops#privacy'
+  get 'terms', to: 'tops#terms'
 
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
