@@ -1,7 +1,7 @@
 <div class='wrapper record'>
-  <% if @rank.id == 1 %>
+  <% if @rank.id == Settings.rank[:beginner] %>
     <div class='pt-2 rank'>難易度:<%= @rank.level %></div>
-  <% elsif @rank.id == 2 %>
+  <% elsif @rank.id == Settings.rank[:intermediate] %>
     <div class='pt-2 rank'>難易度:<%= @rank.level %></div>
   <% else %>
     <div class='pt-2 rank'>難易度:<%= @rank.level %></div>

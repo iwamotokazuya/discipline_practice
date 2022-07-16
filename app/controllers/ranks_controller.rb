@@ -4,9 +4,9 @@ class RanksController < ApplicationController
   before_action :set_rank, only: %i[record login_record]
 
   def index
-    @beginner = Rank.find(1)
-    @intermediate = Rank.find(2)
-    @advanced = Rank.find(3)
+    @beginner = Rank.find(Settings.rank[:beginner])
+    @intermediate = Rank.find(Settings.rank[:intermediate])
+    @advanced = Rank.find(Settings.rank[:advanced])
   end
 
   def record; end

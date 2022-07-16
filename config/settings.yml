@@ -1,0 +1,8 @@
+user:
+  guest: 1
+rank:
+  beginner: 1
+  intermediate: 2
+  advanced: 3
+score:
+  standard: 70

@@ -9,14 +9,15 @@ class ResultsController < ApplicationController
     @result.user_id = if logged_in?
                         current_user.id
                       else
-                        1
+                        Settings.user[:guest]
                       end
     @result.scoreRank
     @result.start_time = Date.today
+    @result.save!
     if params[:part] == 'all'
-      render json: { url: result_path(@result) } if @result.save
+      render json: { url: result_path(@result) }
     else
-      render json: { url: loginresults_result_path(@result) } if @result.save
+      render json: { url: loginresults_result_path(@result) }
     end
   end
 
