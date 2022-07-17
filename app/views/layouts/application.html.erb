@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DisciplinePractice</title>
+    <%= display_meta_tags(default_meta_tags) %>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,15 +16,18 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <% if logged_in? %>
-      <%= render 'layouts/header' %>
-    <% else %>
-      <%= render 'layouts/before_login_header' %>
-    <% end %>
-  </header>
-  <body>
+  <body class='body'>
+    <header>
+      <% if logged_in? %>
+        <%= render 'layouts/header' %>
+      <% else %>
+        <%= render 'layouts/before_login_header' %>
+      <% end %>
+    </header>
     <%= render 'layouts/flash_message' %>
     <%= yield %>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

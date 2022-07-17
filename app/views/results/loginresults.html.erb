@@ -8,15 +8,15 @@
     <p class='text-center pt-5 score'><span class='title'><%= @result.score %></span>点</p>
   <% end %>
 
-  <% if @rank.id == 1 %>
+  <% if @rank.id == Settings.rank[:beginner] %>
     <p class='d-flex justify-content-end comment'><%= @beginner_comment %></p>
-  <% elsif @rank.id == 2 %>
+  <% elsif @rank.id == Settings.rank[:intermediate] %>
     <p class='d-flex justify-content-end comment'><%= @intermediate_comment %></p>
   <% else %>
     <p class='d-flex justify-content-end comment'><%= @advanced_comment %></p>
   <% end %>
 
-  <% if @result.score >= 70 %>
+  <% if @result.score >= Settings.score[:standard] %>
     <p class='d-flex justify-content-end master'><span class="iconify" data-icon="material-symbols:perm-device-information-outline-sharp" style="color: #ff9a62; font-size: 50px;"></span><%= @result.user.name %>さんはしつけマスターとなったことをお知らせします。</p>
   <% end %>
 </div>
@@ -30,7 +30,7 @@
     <%= link_to 'もう一度やりなおす', ranks_path(next: 'step'), class: 'btn btn-dark btn-rounded mx-auto mt-2' %>
   <% end %>
 
-  <% if @result.score >= 70 %>
+  <% if @result.score >= Settings.score[:standard] %>
     <%= link_to 'https://twitter.com/share?url=#{request.url}&text=難易度:#{@rank.level}をマスターしました。%0a%0aあなたもペットに理想的なしつけを身につけませんか？', target: '_blank', class: 'btn btn-info btn-rounded mx-auto mt-2' do %>
       <i class='fab fa-twitter'></i>結果をshareしよう！
     <% end %>

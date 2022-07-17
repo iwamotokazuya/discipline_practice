@@ -6,6 +6,9 @@ const record = document.getElementById('record');
 const sentence = document.getElementById('sentence');
 let url = new URL(window.location.href);
 let params = url.searchParams;
+const beginner_id = 1;
+const intermediate_id = 2;
+const advanced_id = 3;
 
 let stream = null;
 let audio_sample_rate = null;
@@ -87,11 +90,11 @@ let sendToResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
   if( params.has('beginner') ) {
-    formdata.append('rank_id', 1);
+    formdata.append('rank_id', beginner_id);
   } else if( params.has('intermediate') ) {
-    formdata.append('rank_id', 2);
+    formdata.append('rank_id', intermediate_id);
   } else if( params.has('advanced') ) {
-    formdata.append('rank_id', 3);
+    formdata.append('rank_id', advanced_id);
   }
   axios.post('/results?part=all', formdata, {
     headers: {
@@ -110,11 +113,11 @@ let sendToLoginResult = function() {
   let formdata = new FormData();
   formdata.append('record_voice', blob);
   if( params.has('beginner') ) {
-    formdata.append('rank_id', 1);
+    formdata.append('rank_id', beginner_id);
   } else if( params.has('intermediate') ) {
-    formdata.append('rank_id', 2);
+    formdata.append('rank_id', intermediate_id);
   } else if( params.has('advanced') ) {
-    formdata.append('rank_id', 3);
+    formdata.append('rank_id', advanced_id);
   }
   axios.post('/results?part=login', formdata, {
     headers: {
@@ -152,7 +155,7 @@ let handleSuccess = function (stream) {
 
   const timeoutId = setTimeout(function() {
     saveAudio();
-    if( params.has('part') ) {
+    if( params.get('part') == 'all' ) {
       sendToResult(blob);
     } else {
       sendToLoginResult(blob);
