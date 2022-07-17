@@ -14,6 +14,9 @@
  *= require_tree .
  *= require_self
  */
+ .body {
+  background: rgba(242, 237, 232, 0.776);
+ }
  .title {
     font-family: 'Grape Nuts', cursive;
     font-style: normal;
@@ -32,9 +35,12 @@
   }
  .footer {
    color: #808080;
-   background: #e2e2e2;
+   background: rgba(243, 236, 230, 0.776);
    text-align: center;
    padding: 30px;
+   /* position: absolute;
+   bottom: 0;
+   width: 100; */
   }
  .footer a {
    color: #808080;
