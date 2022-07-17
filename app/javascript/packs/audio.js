@@ -7,8 +7,8 @@ const sentence = document.getElementById('sentence');
 let url = new URL(window.location.href);
 let params = url.searchParams;
 const beginner_id = 1;
-const intermediate_id = 1;
-const advanced_id = 1;
+const intermediate_id = 2;
+const advanced_id = 3;
 
 let stream = null;
 let audio_sample_rate = null;
