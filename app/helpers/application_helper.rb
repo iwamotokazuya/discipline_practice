@@ -2,7 +2,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'しつけメーター',
-      title: 'ほどよい怒りを身につけませんか？',
+      title: 'Discipline-meter',
       reverse: true,
       charset: 'utf-8',
       description: 'ペットが可愛くて仕方なく、あまり怒れない人に怒る基準を明確にして, しつけの練習をするサービスです。',
