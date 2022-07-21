@@ -8,7 +8,7 @@ class ResultsController < ApplicationController
     @result.empath(result_params)
     @result.user_id = logged_in? ? current_user.id : Settings.user[:guest]
     @result.scoreRank
-    @result.start_time = Date.today
+    @result.start_date = Date.today
     @result.save!
     if params[:part] == 'all'
       render json: { url: result_path(@result) }
