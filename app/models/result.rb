@@ -14,6 +14,10 @@ class Result < ApplicationRecord
   validates :sorrow, numericality: { only_integer: true }, presence: true
   validates :energy, numericality: { only_integer: true }, presence: true
 
+  def start_time
+    self.start_date
+  end
+
   def empath(formdata)
     conn = Faraday::Connection.new('url': ENV['API_URL']) do |f|
       f.request :multipart

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_03_020223) do
+ActiveRecord::Schema.define(version: 2022_07_21_085723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2022_07_03_020223) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.date "start_time"
+    t.date "start_date"
     t.bigint "rank_id"
     t.index ["rank_id"], name: "index_results_on_rank_id"
     t.index ["user_id"], name: "index_results_on_user_id"
