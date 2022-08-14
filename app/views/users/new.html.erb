@@ -24,7 +24,7 @@
 
         <div class='form-group3'>
           <%= f.label :images, '好きなペットの写真を※3枚まで', class: 'col-sm-6 control-label' %>
-          <%= f.file_field :images, name: 'recipe[images][]', multiple: true %>
+          <%= f.file_field :images, name: 'user[images][]', multiple: true %>
         </div>
         <div id='new-image'></div>
         <%= f.submit '登録', class: 'btn btn-outline-primary login' %>

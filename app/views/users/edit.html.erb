@@ -24,7 +24,7 @@
 
         <div class='form-group3'>
           <%= f.label :images, class: 'col-sm-4 control-label' %>
-          <%= f.file_field :images, multiple: true %>
+          <%= f.file_field :images, name: 'user[images][]', multiple: true %>
         </div>
         <div id='new-image'></div>
         <% if @user.images.attached? %>
